@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大乐透投注记录面板</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: #2c2c2c;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            background-color: #333;
+        }
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .win {
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+        }
+        .lose {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #ff4d4d;
+        }
+        .number-cell {
+            font-weight: bold;
+            color: #fff;
+        }
+        .period-cell {
+            color: #bbb;
+            font-size: 14px;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        .statistics {
+            margin-top: 20px;
+        }
+        .table-responsive {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .chart-container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>大乐透投注记录面板</h2>
+
+    <div class="container">
+        <!-- 玩家和老板信息 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>玩家信息</h4>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>用户ID</th>
+                                <th>当前积分</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playersTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4>庄家信息</h4>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>用户ID</th>
+                                <th>当前积分</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bossTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 投注记录 -->
+        <h4>投注记录</h4>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>用户ID</th>
+                        <th>投入积分</th>
+                        <th>投注类型</th>
+                        <th>投注结果</th>
+                        <th>奖金</th>
+                        <th>投注时间</th>
+                        <th>期号</th>
+                    </tr>
+                </thead>
+                <tbody id="betTable">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分页按钮 -->
+        <nav>
+            <ul class="pagination">
+                <li class="page-item"><button class="page-link" id="prevBtn">上一页</button></li>
+                <li class="page-item"><button class="page-link" id="nextBtn">下一页</button></li>
+            </ul>
+        </nav>
+
+        <!-- 统计信息 -->
+        <div class="statistics">
+            <h4>统计信息</h4>
+            <div class="row">
+                <div class="col-md-6 chart-container">
+                    <canvas id="playerProfitChart" width="400" height="200"></canvas>
+                </div>
+                <div class="col-md-6 chart-container">
+                    <canvas id="bossProfitChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <p id="playerStats">玩家总盈亏：0</p>
+            <p id="bossStats">老板总盈亏：0</p>
+            <p id="totalBets">总投注积分：0</p>
+            <p id="totalWinnings">总奖金发放：0</p>
+        </div>
+    </div>
+
+    <!-- 引入 Bootstrap JS 和依赖 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 主脚本 -->
+    <script>
+        const playersTable = document.getElementById('playersTable');
+        const bossTable = document.getElementById('bossTable');
+        const betTable = document.getElementById('betTable');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const playerStats = document.getElementById('playerStats');
+        const bossStats = document.getElementById('bossStats');
+        const totalBets = document.getElementById('totalBets');
+        const totalWinnings = document.getElementById('totalWinnings');
+
+        const playerProfitCtx = document.getElementById('playerProfitChart').getContext('2d');
+        const bossProfitCtx = document.getElementById('bossProfitChart').getContext('2d');
+
+        let userData = {};
+        let gameHistory = {};
+        let bossId = null;
+        let processedBets = [];
+        let currentPage = 1;
+        const rowsPerPage = 10;
+
+        let playerProfitChart;
+        let bossProfitChart;
+
+        // 分页逻辑
+        function renderTable() {
+            if (!processedBets.length) {
+                betTable.innerHTML = '<tr><td colspan="8">无投注记录</td></tr>';
+                return;
+            }
+
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const currentBets = processedBets.slice(start, end);
+
+            betTable.innerHTML = '';
+
+            currentBets.forEach(bet => {
+                const row = document.createElement('tr');
+                let resultClass = '';
+                if (bet.result === '玩家胜') {
+                    resultClass = 'win';
+                } else if (bet.result === '庄家胜') {
+                    resultClass = 'lose';
+                }
+                if (resultClass) {
+                    row.classList.add(resultClass);
+                }
+
+                row.innerHTML = `
+                    <td>${bet.username}</td>
+                    <td>${bet.user_id}</td>
+                    <td>${bet.bet_amount}</td>
+                    <td>${bet.bet_type}</td>
+                    <td>${bet.result}</td>
+                    <td>${bet.winnings !== 'N/A' ? bet.winnings : 'N/A'}</td>
+                    <td>${bet.time}</td>
+                    <td class="period-cell">${bet.period_number}</td>
+                `;
+                betTable.appendChild(row);
+            });
+
+            updatePaginationButtons();
+        }
+
+        function updatePaginationButtons() {
+            const totalPages = Math.ceil(processedBets.length / rowsPerPage);
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+        }
+
+        // 统计逻辑
+        function updateStatistics() {
+            let totalPlayerProfit = 0;
+            let totalBossProfit = 0;
+            let totalBet = 0;
+            let totalWin = 0;
+
+            processedBets.forEach(bet => {
+                if (bet.player_profit) {
+                    totalPlayerProfit += bet.player_profit;
+                }
+                if (bet.boss_profit) {
+                    totalBossProfit += bet.boss_profit;
+                }
+                if (bet.bet_amount) {
+                    totalBet += bet.bet_amount;
+                }
+                if (bet.winnings && bet.winnings !== 'N/A') {
+                    totalWin += bet.winnings;
+                }
+            });
+
+            playerStats.textContent = `玩家总盈亏：${totalPlayerProfit}`;
+            bossStats.textContent = `老板总盈亏：${totalBossProfit}`;
+            totalBets.textContent = `总投注积分：${totalBet}`;
+            totalWinnings.textContent = `总奖金发放：${totalWin}`;
+
+            // 更新图表
+            updateCharts(totalPlayerProfit, totalBossProfit);
+        }
+
+        // 渲染玩家和老板信息
+        function renderUsers() {
+            playersTable.innerHTML = '';
+            bossTable.innerHTML = '';
+
+            for (const userId in userData) {
+                const user = userData[userId];
+                if (userId === bossId) {
+                    // 渲染老板信息
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.username}</td>
+                        <td>${userId}</td>
+                        <td>${user.points}</td>
+                    `;
+                    bossTable.appendChild(row);
+                } else {
+                    // 渲染玩家信息
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.username}</td>
+                        <td>${userId}</td>
+                        <td>${user.points}</td>
+                    `;
+                    playersTable.appendChild(row);
+                }
+            }
+        }
+
+        // 处理投注记录
+        function processBetsData() {
+            processedBets = [];
+
+            for (const userId in gameHistory) {
+                const bets = gameHistory[userId];
+                const username = userData[userId] ? userData[userId].username : "未知用户";
+
+                bets.forEach(bet => {
+                    // 只处理玩家的投注记录
+                    if (bet.role === 'player' && bet.bet_amount !== undefined) {
+                        // 从描述中提取投注类型
+                        const descriptionParts = bet.description.split(' ');
+                        const bet_type = descriptionParts[0] || 'N/A';
+
+                        let resultText = '';
+                        let winnings = 0;
+                        let playerProfit = 0;
+                        let bossProfit = 0;
+
+                        if (bet.points_change > 0) {
+                            resultText = '玩家胜';
+                            winnings = bet.points_change;
+                            playerProfit = winnings;
+                            bossProfit = -winnings;
+                        } else if (bet.points_change < 0) {
+                            resultText = '庄家胜';
+                            winnings = 0;
+                            playerProfit = bet.points_change;
+                            bossProfit = -bet.points_change;
+                        }
+
+                        processedBets.push({
+                            username: username,
+                            user_id: userId,
+                            bet_amount: bet.bet_amount || 0,
+                            bet_type: bet_type,
+                            numbers: [], // 如果有投注号码，可以在data.json中添加
+                            result: resultText,
+                            winnings: winnings > 0 ? winnings : 'N/A',
+                            time: bet.time || 'N/A',
+                            period_number: bet.period_number || 'N/A',
+                            player_profit: playerProfit,
+                            boss_profit: bossProfit
+                        });
+                    }
+                });
+            }
+
+            // 按时间排序（最新的在前）
+            processedBets.sort((a, b) => new Date(b.time) - new Date(a.time));
+        }
+
+        // 初始化图表
+        function initCharts() {
+            playerProfitChart = new Chart(playerProfitCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['玩家盈亏'],
+                    datasets: [{
+                        label: '盈亏',
+                        data: [0],
+                        backgroundColor: ['rgba(0, 255, 0, 0.5)'],
+                        borderColor: ['rgba(0, 255, 0, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            bossProfitChart = new Chart(bossProfitCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['老板盈亏'],
+                    datasets: [{
+                        label: '盈亏',
+                        data: [0],
+                        backgroundColor: ['rgba(255, 0, 0, 0.5)'],
+                        borderColor: ['rgba(255, 0, 0, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // 更新图表
+        function updateCharts(playerProfit, bossProfit) {
+            playerProfitChart.data.datasets[0].data = [playerProfit];
+            playerProfitChart.update();
+
+            bossProfitChart.data.datasets[0].data = [bossProfit];
+            bossProfitChart.update();
+        }
+
+        // 自动刷新数据
+        function autoRefreshData() {
+            fetch('data.json?t=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应不是OK');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    bossId = data.boss_id;
+                    userData = data.user_data || {};
+                    gameHistory = data.game_history || {};
+
+                    processBetsData();
+                    renderUsers();
+                    renderTable();
+                    updateStatistics();
+                })
+                .catch(error => {
+                    console.error('加载数据失败:', error);
+                });
+        }
+
+        // 初始化图表
+        initCharts();
+
+        // 初次加载数据
+        autoRefreshData();
+
+        // 设置定时器每5秒刷新一次
+        setInterval(autoRefreshData, 5000);
+
+        // 分页按钮事件
+        nextBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(processedBets.length / rowsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+            }
+        });
+    </script>
+
+</body>
+</html>
