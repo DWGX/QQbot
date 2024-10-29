@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWGX Team 博客主页</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 CryptoJS 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <header>
+            <h1>欢迎来到 DWGX Team 的博客主页</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#bot">帝哈哈小游戏 Bot</a></li>
+                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#social">关注我们</a></li>
+                <li><a href="#chat">公开聊天</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- 关于我们 -->
+            <section id="about">
+                <h2>关于 DWGX Team</h2>
+                <p>DWGX Team - Dream Team</p>
+            </section>
+
+            <!-- 频道卡片 -->
+            <section id="channel" class="channel-card">
+                <h2>加入我们的频道</h2>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <button class="flip-btn unified-btn">⟲</button>
+                        <h3>加入我的频道</h3>
+                        <p>加入频道</p>
+                        <button class="join-channel-btn unified-btn">加入我的频道</button>
+                    </div>
+                    <div class="card-back">
+                        <h3>频道介绍</h3>
+                        <p>交流分享娱乐</p>
+                        <button class="flip-back-btn unified-btn">🔙</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 帝哈哈小游戏 Bot -->
+            <section id="bot">
+                <h2>帝哈哈Bot </h2>
+                <p>Like FLL DHH bot</p>
+                <ul class="bot-features">
+                    <li>🎲 因为玩魔怔了</li>
+                    <li>🎁 🔞成人游戏🔞</li>
+                    <li>👑 QQ官方机器人</li>
+                </ul>
+            </section>
+
+            <!-- 联系我们 -->
+            <section id="contact">
+                <h2>联系我们</h2>
+                <ul>
+                    <li>Email: <a href="mailto:dwgx@gmail.com">dwgx@gmail.com</a></li>
+                    <li>QQ: 136666451</li>
+                </ul>
+            </section>
+
+            <!-- 关注我们 -->
+            <section id="social">
+                <h2>关注我们</h2>
+                <div class="social-links">
+                    <a href="https://github.com/DWGX" target="_blank">
+                        <img src="./icon/github.png" alt="GitHub" class="social-icon"> GITHUB
+                    </a>
+                    <a href="https://space.bilibili.com/1452905012" target="_blank">
+                        <img src="./icon/bilibili.png" alt="哔哩哔哩" class="social-icon"> BILIBILI
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="./icon/telegram.png" alt="Telegram" class="social-icon"> TELEGRAM
+                    </a>
+                </div>
+            </section>
+
+            <!-- 公开聊天 -->
+            <section id="chat">
+                <h2>大厅聊天</h2>
+                <div id="onlineUsers" class="online-users">
+                    <h3>实机IP</h3>
+                    <p>正在加载...</p>
+                </div>
+                <div class="chat-container">
+                    <button id="getKeyBtn" class="unified-btn">获取我的密钥</button>
+                    <div id="keyDisplay" style="display: none;">
+                        <p>密钥：<span id="userKey"></span></p>
+                        <p>系统已自动为您连接聊天服务器。</p>
+                    </div>
+                    <div class="messages" id="messages"></div>
+                    <form class="chat-form" id="chatForm">
+                        <input type="text" id="chatInput" placeholder="输入消息..." autocomplete="off" required>
+                        <input type="file" id="imageInput" accept="image/png, image/jpeg" style="display: none;">
+                        <button type="button" id="imageUploadBtn" class="unified-btn">上传图片</button>
+                        <button type="submit" class="unified-btn">发送</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 DWGX Team. 保留所有权利。</p>
+        </footer>
+    </div>
+
+    <!-- 引入脚本文件 -->
+    <script src="get_ip.js"></script>
+    <script src="chat.js"></script>
+    <script src="image_chat.js"></script>
+</body>
+
+</html>
