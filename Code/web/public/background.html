@@ -471,7 +471,7 @@
         function autoRefreshData(retries = 3) {
             loadingOverlay.style.display = "flex";
 
-            fetch('../../run/data.json?t=' + new Date().getTime())
+            fetch('../../../other/run/data.json?t=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('网络响应不正常');

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHH 机器人游戏规则</title>
+    <style>
+        /* 定义CSS变量 */
+        :root {
+            --background-color: #202123;
+            --text-color: #E6E6E6;
+            --header-bg: rgba(43, 45, 49, 0.8);
+            --accent-color: #00A884;
+            --section-title-color: #FFFFFF;
+            --list-bg: rgba(62, 63, 75, 0.9);
+            --footer-bg: rgba(43, 45, 49, 0.8);
+            --modal-bg: rgba(45, 47, 62, 0.9);
+            --info-box-bg: rgba(43, 45, 49, 0.8);
+            --selection-bg: #00A884;
+            --selection-color: #ffffff;
+        }
+
+        /* ChatGPTUI 主题 */
+        .chatgpt-ui {
+            --background-color: #202123;
+            --text-color: #E6E6E6;
+            --header-bg: rgba(43, 45, 49, 0.8);
+            --accent-color: #00A884;
+            --section-title-color: #FFFFFF;
+            --list-bg: rgba(62, 63, 75, 0.9);
+            --footer-bg: rgba(43, 45, 49, 0.8);
+            --modal-bg: rgba(45, 47, 62, 0.9);
+            --info-box-bg: rgba(43, 45, 49, 0.8);
+            --selection-bg: #00A884;
+            --selection-color: #ffffff;
+        }
+
+        /* 亚克力透明玻璃风格主题 */
+        .acrylic-ui {
+            --background-color: rgba(255, 255, 255, 0.2);
+            --text-color: #000000;
+            --header-bg: rgba(255, 255, 255, 0.6);
+            --accent-color: #FF4081;
+            --section-title-color: #000000;
+            --list-bg: rgba(255, 255, 255, 0.4);
+            --footer-bg: rgba(255, 255, 255, 0.6);
+            --modal-bg: rgba(255, 255, 255, 0.9);
+            --info-box-bg: rgba(255, 255, 255, 0.8);
+            --selection-bg: #FF4081;
+            --selection-color: #ffffff;
+        }
+
+        /* 基础样式 */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--accent-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+        header h1::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover::after {
+            transform: scaleX(1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--section-title-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 168, 132, 0.7), rgba(0, 168, 132, 1));
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        h2:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        p,
+        ul li {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-color: var(--list-bg);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        ul li::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        ul li:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* 代码块样式 */
+        .code-block {
+            background-color: var(--modal-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .code-header {
+            background-color: #3E3F4B;
+            padding: 10px 16px;
+            font-size: 14px;
+            color: #A8A8A8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .code-content {
+            padding: 16px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            color: var(--text-color);
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        ::selection {
+            background-color: var(--selection-bg);
+            color: var(--selection-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--footer-bg);
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            color: var(--text-color);
+            border: 1px solid #444654;
+            border-radius: 12px;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--modal-bg);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #FFFFFF;
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        /* 信息框样式 */
+        .info-box {
+            background-color: var(--info-box-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 168, 132, 0), rgba(0, 168, 132, 1), rgba(0, 168, 132, 0));
+            margin: 15px 0;
+        }
+
+        /* 切换按钮样式 */
+        .toggle-button {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-button:hover {
+            background-color: #00997A;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body class="chatgpt-ui">
+
+    <header>
+        <h1>DHH 机器人游戏规则</h1>
+        <div>
+            <button class="toggle-button" onclick="toggleTheme()">切换主题</button>
+            <span onclick="toggleModal()" style="cursor: pointer; font-size: 24px; margin-left: 10px;">ℹ️</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>红包指令说明</h2>
+            <ul>
+                <li>@机器人 hb &lt;金额&gt; &lt;领取人数&gt; - 发送一个指定金额的公开红包，指定领取人数。例如：@机器人 hb 100 5</li>
+                <li>@机器人 hb @用户名 &lt;金额&gt; - 发送一个指定金额的私密红包给指定用户。例如：@机器人 hb @用户 100</li>
+                <li>@机器人 hb 确认 - 确认发送红包。</li>
+                <li>@机器人 领取&lt;期号&gt;红包 - 领取指定期号的红包。例如：@机器人 领取202410242141p红包</li>
+                <li>@机器人 撤回&lt;期号&gt;红包 - 撤回指定期号的红包（仅管理员）。例如：@机器人 撤回202410242141p红包</li>
+            </ul>
+            <h2>其他指令说明</h2>
+            <ul>
+                <li>@机器人 sh 或 @机器人 🎲 - 摇一次骰子（手动模式）。</li>
+                <li>@机器人 sh3 或 @机器人 🎲3 - 自动摇三次骰子并发送结果。</li>
+                <li>@机器人 取消 - 取消当前进行中的游戏。</li>
+                <li>@机器人 我当老板 - 成为老板。</li>
+                <li>@机器人 不当老板 - 离开老板职位。</li>
+                <li>@机器人 查看老板 或 @机器人 boss - 查看当前老板。</li>
+                <li>@机器人 ye 或 @机器人 查看账户 - 查看您的账户余额和历史记录。</li>
+                <li>@机器人 复读 &lt;内容&gt; - 让机器人重复指定的内容。</li>
+            </ul>
+            <h2>参与类型与赔率</h2>
+            <ul>
+                <li><strong>大</strong>（da）：当游戏结果为11到18，您将获得投入金额的1.97倍奖励。</li>
+                <li><strong>小</strong>（x）：当游戏结果为3到10，您将获得投入金额的1.97倍奖励。</li>
+                <li><strong>双</strong>（s）：当游戏结果为双数，您将获得投入金额的2.9倍奖励。</li>
+                <li><strong>单</strong>（dan）：当游戏结果为单数，您将获得投入金额的2.9倍奖励。</li>
+                <li><strong>压数字</strong>（例如：3y10）：投入指定数字，当游戏结果与您投入的数字相同时，您将获得投入金额的6.9倍奖励。</li>
+            </ul>
+        </section>
+
+        <div class="code-block">
+            <div class="code-header">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle green"></div>
+                <span>逻辑展示</span>
+            </div>
+            <pre class="code-content">
+# 示例代码展示游戏的随机逻辑
+import random
+
+def roll_dice(num_dice=3):
+    return [random.randint(1, 6) for _ in range(num_dice)]
+
+results = roll_dice()
+total = sum(results)
+print(f"骰子结果: {results}, 总和: {total}")
+            </pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DHH 机器人 | 版权所有</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>游戏规则详细介绍</h2>
+            <p>在这里查看所有游戏规则的详细介绍...</p>
+
+            <div class="info-box">
+                <p>该网页内容完全由AI随机生成</p>
+                <div class="divider"></div>
+                <p style="font-style: italic; color: #A8A8A8;">本页面内容由 <strong>OpenAI 技术支持</strong> 生成，最终解释权归内容发布者所有。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = (modal.style.display === "none" || modal.style.display === "") ? "flex" : "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // 切换主题
+        function toggleTheme() {
+            const body = document.body;
+            if (body.classList.contains('chatgpt-ui')) {
+                body.classList.remove('chatgpt-ui');
+                body.classList.add('acrylic-ui');
+            } else if (body.classList.contains('acrylic-ui')) {
+                body.classList.remove('acrylic-ui');
+                body.classList.add('chatgpt-ui');
+            } else {
+                body.classList.add('chatgpt-ui');
+            }
+        }
+
+        // 页面加载时自动打开模态框
+        window.onload = function() {
+            toggleModal();
+        };
+    </script>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+# DataManager.py
 
 import json
 import os
@@ -57,7 +58,6 @@ class DataManager:
 
                 if isinstance(self.data["game_history"].get("period_numbers"), list):
                     self.data["game_history"]["period_numbers"] = set(self.data["game_history"]["period_numbers"])
-                    logger.info("'period_numbers' in game_history 已转换为 set。")
                 logger.info("数据文件加载成功。")
             except json.JSONDecodeError:
                 logger.error(f"{self.data_file} 格式错误，重新初始化。")
@@ -71,7 +71,8 @@ class DataManager:
                     "internal_to_userid": {},
                     "userid_to_internal": {}
                 }
-                asyncio.run(self.save_data())
+                # 同步保存初始化数据
+                self._sync_save_data()
         else:
             self.data = {
                 "boss_id": None,
@@ -83,8 +84,14 @@ class DataManager:
                 "internal_to_userid": {},
                 "userid_to_internal": {}
             }
-            asyncio.run(self.save_data())
+            self._sync_save_data()
             logger.info("未找到数据文件，初始化为空。")
+
+    def _sync_save_data(self):
+        data_copy = replace_sets(self.data.copy())
+        with open(self.data_file, 'w', encoding='utf-8') as f:
+            json.dump(data_copy, f, ensure_ascii=False, indent=4)
+        logger.info("数据文件同步保存成功。")
 
     async def save_data(self):
         async with self.data_lock:
@@ -97,14 +104,15 @@ class DataManager:
                 logger.exception("保存数据文件时发生错误。")
 
     async def get_or_create_user(self, userid, username):
-        if userid not in self.data.get("userid_to_internal", {}):
-            internal_id = self.generate_internal_id()
-            self.data["user_data"][internal_id] = {'userid': userid, 'username': username, 'points': 1000}
-            self.data["internal_to_userid"][internal_id] = userid
-            self.data["userid_to_internal"][userid] = internal_id
-            await self.save_data()
-            logger.info(f"创建新用户 {internal_id} - {username} (User ID: {userid})，初始代币：1000")
-        return self.data["userid_to_internal"][userid]
+        async with self.data_lock:
+            if userid not in self.data.get("userid_to_internal", {}):
+                internal_id = self.generate_internal_id()
+                self.data["user_data"][internal_id] = {'userid': userid, 'username': username, 'points': 1000}
+                self.data["internal_to_userid"][internal_id] = userid
+                self.data["userid_to_internal"][userid] = internal_id
+                await self.save_data()
+                logger.info(f"创建新用户 {internal_id} - {username} (User ID: {userid})，初始代币：1000")
+            return self.data["userid_to_internal"][userid]
 
     def get_username(self, internal_id):
         return self.data.get("user_data", {}).get(internal_id, {}).get("username", "未知")

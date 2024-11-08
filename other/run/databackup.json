@@ -1,0 +1,26 @@
+{
+    "boss_id": "000",
+    "user_data": {
+        "000": {
+            "username": "Host",
+            "points": 100000001000
+        },
+        "001": {
+            "userid": "1062295115427866629",
+            "username": "東雪蓮",
+            "points": 1000
+        }
+    },
+    "game_history": {
+        "period_numbers": []
+    },
+    "red_envelopes": {},
+    "internal_to_userid": {
+        "000": "000",
+        "001": "1062295115427866629"
+    },
+    "userid_to_internal": {
+        "000":"000",
+        "1062295115427866629": "001"
+    }
+}

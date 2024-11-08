@@ -3,309 +3,645 @@
     "user_data": {
         "000": {
             "username": "Host",
-            "points": 100000000000
+            "points": 99999830742
         },
-        "10001": {
+        "001": {
+            "userid": "1062295115427866629",
             "username": "東雪蓮",
-            "points": 100000000
+            "points": 0
         },
-        "0Om3Me6h": {
+        "MnqZo7Dz": {
             "userid": "1744580462014688341",
             "username": "想把果冻砍成pro的绿衫",
-            "points": 999
+            "points": 978080
         }
     },
     "game_history": {
         "period_numbers": [
-            "20241026102152V3WD",
-            "202410261138063JCC",
-            "202410300655344LKY",
-            "202410261025046SPJ",
-            "20241026113722KIP2",
-            "202410300635432C4R",
-            "20241026100225GLKW",
-            "20241026113523Q6X2",
-            "202410261025431GK9",
-            "20241026113634NI10",
-            "20241026113647TUPH",
-            "202410261010091SLN"
+            "20241102211744ZHAF",
+            "20241102210825R5J6",
+            "20241102211857OUVW",
+            "202411022122475UOS",
+            "20241102211044PMGG",
+            "20241102211105RL8L",
+            "202411022110499RE8",
+            "20241102210610TH2W",
+            "20241102210800R1T4",
+            "20241102211937E8PC",
+            "20241102212142GLDR",
+            "2024110221210424PQ",
+            "202411022120144OBC",
+            "20241102210621112Z",
+            "20241102210730T1MC",
+            "20241102212218W0WN"
         ],
-        "10001": [
+        "MnqZo7Dz": [
             {
-                "time": "2024-10-26 10:02:25",
-                "description": "da 1000 用于游戏",
-                "points_change": -1000,
-                "new_balance": 1000,
-                "role": "player",
-                "period_number": "20241026100225GLKW",
-                "bet_amount": 1000
+                "time": "2024-11-02 21:06:10",
+                "description": "扣除 30 代币用于游戏",
+                "points_change": -30,
+                "new_balance": 970,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 10:02:34",
-                "description": "da 赢得游戏，奖励 1970 代币",
-                "points_change": 1970,
-                "new_balance": 2970,
+                "time": "2024-11-02 21:06:10",
+                "description": "大 30 用于游戏",
+                "points_change": -30,
+                "new_balance": 970,
                 "role": "player",
-                "period_number": "20241026100225GLKW",
-                "bet_amount": 1000
+                "period_number": "20241102210610TH2W",
+                "bet_amount": 30
             },
             {
-                "time": "2024-10-26 10:10:09",
-                "description": "da 1000 用于游戏",
-                "points_change": -1000,
-                "new_balance": 1000,
+                "time": "2024-11-02 21:06:26",
+                "description": "大 收获游戏，奖励 59 代币",
+                "points_change": 59,
+                "new_balance": 1029,
                 "role": "player",
-                "period_number": "202410261010091SLN",
-                "bet_amount": 1000
+                "period_number": "20241102210610TH2W",
+                "bet_amount": 30
             },
             {
-                "time": "2024-10-26 10:10:45",
-                "description": "da 赢得游戏，奖励 1970 代币",
-                "points_change": 1970,
-                "new_balance": 2970,
-                "role": "player",
-                "period_number": "202410261010091SLN",
-                "bet_amount": 1000
+                "time": "2024-11-02 21:07:30",
+                "description": "扣除 50 代币用于游戏",
+                "points_change": -50,
+                "new_balance": 979,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 10:21:52",
-                "description": "da 1970 用于游戏",
-                "points_change": -1970,
-                "new_balance": 2970,
+                "time": "2024-11-02 21:07:30",
+                "description": "小 50 用于游戏",
+                "points_change": -50,
+                "new_balance": 979,
                 "role": "player",
-                "period_number": "20241026102152V3WD",
-                "bet_amount": 1970
+                "period_number": "20241102210730T1MC",
+                "bet_amount": 50
             },
             {
-                "time": "2024-10-26 10:25:04",
-                "description": "da 2970 用于游戏",
-                "points_change": -2970,
+                "time": "2024-11-02 21:07:38",
+                "description": "小 收获游戏，奖励 98 代币",
+                "points_change": 98,
+                "new_balance": 1077,
+                "role": "player",
+                "period_number": "20241102210730T1MC",
+                "bet_amount": 50
+            },
+            {
+                "time": "2024-11-02 21:08:00",
+                "description": "扣除 20 代币用于游戏",
+                "points_change": -20,
+                "new_balance": 1057,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:08:00",
+                "description": "大 20 用于游戏",
+                "points_change": -20,
+                "new_balance": 1057,
+                "role": "player",
+                "period_number": "20241102210800R1T4",
+                "bet_amount": 20
+            },
+            {
+                "time": "2024-11-02 21:08:25",
+                "description": "扣除 100 代币用于游戏",
+                "points_change": -100,
+                "new_balance": 957,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:08:25",
+                "description": "大 100 用于游戏",
+                "points_change": -100,
+                "new_balance": 957,
+                "role": "player",
+                "period_number": "20241102210825R5J6",
+                "bet_amount": 100
+            },
+            {
+                "time": "2024-11-02 21:08:34",
+                "description": "大 收获游戏，奖励 197 代币",
+                "points_change": 197,
+                "new_balance": 1154,
+                "role": "player",
+                "period_number": "20241102210825R5J6",
+                "bet_amount": 100
+            },
+            {
+                "time": "2024-11-02 21:09:38",
+                "description": "扣除 1154 代币用于游戏",
+                "points_change": -1154,
+                "new_balance": 0,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:09:39",
+                "description": "增加 1154 代币",
+                "points_change": 1154,
+                "new_balance": 1154,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:10:16",
+                "description": "扣除 1154 代币用于游戏",
+                "points_change": -1154,
+                "new_balance": 0,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:10:17",
+                "description": "增加 1154 代币",
+                "points_change": 1154,
+                "new_balance": 1154,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:11:05",
+                "description": "扣除 1154 代币用于游戏",
+                "points_change": -1154,
+                "new_balance": 0,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:11:05",
+                "description": "小 1154 用于游戏",
+                "points_change": -1154,
                 "new_balance": 0,
                 "role": "player",
-                "period_number": "202410261025046SPJ",
-                "bet_amount": 2970
+                "period_number": "20241102211105RL8L",
+                "bet_amount": 1154
             },
             {
-                "time": "2024-10-26 10:25:43",
-                "description": "da 1000 用于游戏",
+                "time": "2024-11-02 21:17:44",
+                "description": "扣除 2000 代币用于游戏",
+                "points_change": -2000,
+                "new_balance": 998000,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:17:44",
+                "description": "大 2000 用于游戏",
+                "points_change": -2000,
+                "new_balance": 998000,
+                "role": "player",
+                "period_number": "20241102211744ZHAF",
+                "bet_amount": 2000
+            },
+            {
+                "time": "2024-11-02 21:18:57",
+                "description": "扣除 1000 代币用于游戏",
                 "points_change": -1000,
-                "new_balance": 0,
+                "new_balance": 997000,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:18:57",
+                "description": "大 1000 用于游戏",
+                "points_change": -1000,
+                "new_balance": 997000,
                 "role": "player",
-                "period_number": "202410261025431GK9",
+                "period_number": "20241102211857OUVW",
                 "bet_amount": 1000
             },
             {
-                "time": "2024-10-26 10:25:48",
-                "description": "da 赢得游戏，奖励 1970 代币",
-                "points_change": 1970,
-                "new_balance": 1970,
-                "role": "player",
-                "period_number": "202410261025431GK9",
-                "bet_amount": 1000
+                "time": "2024-11-02 21:19:37",
+                "description": "扣除 5000 代币用于游戏",
+                "points_change": -5000,
+                "new_balance": 992000,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:35:23",
-                "description": "da 970 用于游戏",
-                "points_change": -970,
-                "new_balance": 1000,
+                "time": "2024-11-02 21:19:37",
+                "description": "大 5000 用于游戏",
+                "points_change": -5000,
+                "new_balance": 992000,
                 "role": "player",
-                "period_number": "20241026113523Q6X2",
-                "bet_amount": 970
+                "period_number": "20241102211937E8PC",
+                "bet_amount": 5000
             },
             {
-                "time": "2024-10-26 11:35:28",
-                "description": "da 赢得游戏，奖励 940 代币",
-                "points_change": 940,
-                "new_balance": 1940,
+                "time": "2024-11-02 21:19:47",
+                "description": "大 🎉 收获游戏，奖励 9850 代币",
+                "points_change": 9850,
+                "new_balance": 1001850,
                 "role": "player",
-                "period_number": "20241026113523Q6X2",
-                "bet_amount": 970
+                "period_number": "20241102211937E8PC",
+                "bet_amount": 5000
             },
             {
-                "time": "2024-10-26 11:36:34",
-                "description": "da 940 用于游戏",
-                "points_change": -940,
-                "new_balance": 1000,
-                "role": "player",
-                "period_number": "20241026113634NI10",
-                "bet_amount": 940
+                "time": "2024-11-02 21:20:14",
+                "description": "扣除 100000 代币用于游戏",
+                "points_change": -100000,
+                "new_balance": 901850,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:36:38",
-                "description": "da 赢得游戏，奖励 911 代币",
-                "points_change": 911,
-                "new_balance": 1911,
+                "time": "2024-11-02 21:20:14",
+                "description": "大 100000 用于游戏",
+                "points_change": -100000,
+                "new_balance": 901850,
                 "role": "player",
-                "period_number": "20241026113634NI10",
-                "bet_amount": 940
+                "period_number": "202411022120144OBC",
+                "bet_amount": 100000
             },
             {
-                "time": "2024-10-26 11:36:47",
-                "description": "da 911 用于游戏",
-                "points_change": -911,
-                "new_balance": 1000,
-                "role": "player",
-                "period_number": "20241026113647TUPH",
-                "bet_amount": 911
+                "time": "2024-11-02 21:21:04",
+                "description": "扣除 100000 代币用于游戏",
+                "points_change": -100000,
+                "new_balance": 801850,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:36:52",
-                "description": "da 赢得游戏，奖励 883 代币",
-                "points_change": 883,
-                "new_balance": 1883,
+                "time": "2024-11-02 21:21:04",
+                "description": "双 100000 用于游戏",
+                "points_change": -100000,
+                "new_balance": 801850,
                 "role": "player",
-                "period_number": "20241026113647TUPH",
-                "bet_amount": 911
+                "period_number": "2024110221210424PQ",
+                "bet_amount": 100000
             },
             {
-                "time": "2024-10-26 11:37:22",
-                "description": "da 888 用于游戏",
-                "points_change": -888,
-                "new_balance": 995,
-                "role": "player",
-                "period_number": "20241026113722KIP2",
-                "bet_amount": 888
+                "time": "2024-11-02 21:21:42",
+                "description": "扣除 100000 代币用于游戏",
+                "points_change": -100000,
+                "new_balance": 701850,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:37:40",
-                "description": "da 赢得游戏，奖励 861 代币",
-                "points_change": 861,
-                "new_balance": 1856,
+                "time": "2024-11-02 21:21:42",
+                "description": "单 100000 用于游戏",
+                "points_change": -100000,
+                "new_balance": 701850,
                 "role": "player",
-                "period_number": "20241026113722KIP2",
-                "bet_amount": 888
+                "period_number": "20241102212142GLDR",
+                "bet_amount": 100000
             },
             {
-                "time": "2024-10-26 11:38:06",
-                "description": "da 1856 用于游戏",
-                "points_change": -1856,
+                "time": "2024-11-02 21:22:18",
+                "description": "扣除 99999 代币用于游戏",
+                "points_change": -99999,
+                "new_balance": 601851,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:22:18",
+                "description": "单 99999 用于游戏",
+                "points_change": -99999,
+                "new_balance": 601851,
+                "role": "player",
+                "period_number": "20241102212218W0WN",
+                "bet_amount": 99999
+            },
+            {
+                "time": "2024-11-02 21:22:28",
+                "description": "单 🎉 收获游戏，奖励 289997 代币",
+                "points_change": 289997,
+                "new_balance": 891848,
+                "role": "player",
+                "period_number": "20241102212218W0WN",
+                "bet_amount": 99999
+            },
+            {
+                "time": "2024-11-02 21:22:47",
+                "description": "扣除 88899 代币用于游戏",
+                "points_change": -88899,
+                "new_balance": 802949,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:22:47",
+                "description": "小 88899 用于游戏",
+                "points_change": -88899,
+                "new_balance": 802949,
+                "role": "player",
+                "period_number": "202411022122475UOS",
+                "bet_amount": 88899
+            },
+            {
+                "time": "2024-11-02 21:23:00",
+                "description": "小 🎉 收获游戏，奖励 175131 代币",
+                "points_change": 175131,
+                "new_balance": 978080,
+                "role": "player",
+                "period_number": "202411022122475UOS",
+                "bet_amount": 88899
+            }
+        ],
+        "001": [
+            {
+                "time": "2024-11-02 21:06:21",
+                "description": "扣除 30 代币用于游戏",
+                "points_change": -30,
+                "new_balance": 970,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:06:21",
+                "description": "大 30 用于游戏",
+                "points_change": -30,
+                "new_balance": 970,
+                "role": "player",
+                "period_number": "20241102210621112Z",
+                "bet_amount": 30
+            },
+            {
+                "time": "2024-11-02 21:06:26",
+                "description": "扣除 59 代币用于支付奖励",
+                "points_change": -59,
+                "new_balance": 911,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:06:26",
+                "description": "玩家 MnqZo7Dz 收获游戏，扣除负责人 59 代币",
+                "points_change": -59,
+                "new_balance": 911,
+                "role": "boss",
+                "period_number": "20241102210610TH2W"
+            },
+            {
+                "time": "2024-11-02 21:06:36",
+                "description": "取消游戏，返还 30 代币",
+                "points_change": 30,
+                "new_balance": 941,
+                "role": "player",
+                "period_number": "20241102210621112Z",
+                "bet_amount": 30
+            },
+            {
+                "time": "2024-11-02 21:07:38",
+                "description": "扣除 98 代币用于支付奖励",
+                "points_change": -98,
+                "new_balance": 843,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:07:38",
+                "description": "玩家 MnqZo7Dz 收获游戏，扣除负责人 98 代币",
+                "points_change": -98,
+                "new_balance": 843,
+                "role": "boss",
+                "period_number": "20241102210730T1MC"
+            },
+            {
+                "time": "2024-11-02 21:08:06",
+                "description": "增加 20 代币作为负责人收益",
+                "points_change": 20,
+                "new_balance": 863,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:08:06",
+                "description": "玩家 MnqZo7Dz 失去游戏，负责人获得 20 代币",
+                "points_change": 20,
+                "new_balance": 863,
+                "role": "boss",
+                "period_number": "20241102210800R1T4"
+            },
+            {
+                "time": "2024-11-02 21:08:34",
+                "description": "扣除 197 代币用于支付奖励",
+                "points_change": -197,
+                "new_balance": 666,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:08:34",
+                "description": "玩家 MnqZo7Dz 收获游戏，扣除负责人 197 代币",
+                "points_change": -197,
+                "new_balance": 666,
+                "role": "boss",
+                "period_number": "20241102210825R5J6"
+            },
+            {
+                "time": "2024-11-02 21:10:44",
+                "description": "扣除 100 代币用于游戏",
+                "points_change": -100,
+                "new_balance": 566,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:10:44",
+                "description": "大 100 用于游戏",
+                "points_change": -100,
+                "new_balance": 566,
+                "role": "player",
+                "period_number": "20241102211044PMGG",
+                "bet_amount": 100
+            },
+            {
+                "time": "2024-11-02 21:10:49",
+                "description": "扣除 566 代币用于游戏",
+                "points_change": -566,
+                "new_balance": 0,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:10:49",
+                "description": "大 566 用于游戏",
+                "points_change": -566,
                 "new_balance": 0,
                 "role": "player",
-                "period_number": "202410261138063JCC",
-                "bet_amount": 1856
-            },
-            {
-                "time": "2024-10-30 06:35:43",
-                "description": "da 888 用于游戏",
-                "points_change": -888,
-                "new_balance": 99999112,
-                "role": "player",
-                "period_number": "202410300635432C4R",
-                "bet_amount": 888
-            },
-            {
-                "time": "2024-10-30 06:35:46",
-                "description": "取消游戏，返还 888 代币",
-                "points_change": 888,
-                "new_balance": 100000000,
-                "role": "player",
-                "period_number": "202410300635432C4R",
-                "bet_amount": 888
+                "period_number": "202411022110499RE8",
+                "bet_amount": 566
             }
         ],
         "000": [
             {
-                "time": "2024-10-26 10:02:34",
-                "description": "玩家 10001 赢得游戏，扣除老板 1970 代币",
-                "points_change": -1970,
-                "new_balance": 9999998029,
-                "role": "boss",
-                "period_number": "20241026100225GLKW"
+                "time": "2024-11-02 21:10:52",
+                "description": "增加 566 代币作为负责人收益",
+                "points_change": 566,
+                "new_balance": 100000001566,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 10:10:45",
-                "description": "玩家 10001 赢得游戏，扣除老板 1970 代币",
-                "points_change": -1970,
-                "new_balance": 8030,
+                "time": "2024-11-02 21:10:52",
+                "description": "玩家 001 失去游戏，负责人获得 566 代币",
+                "points_change": 566,
+                "new_balance": 100000001566,
                 "role": "boss",
-                "period_number": "202410261010091SLN"
+                "period_number": "202411022110499RE8"
             },
             {
-                "time": "2024-10-26 10:21:56",
-                "description": "玩家 10001 输掉游戏，老板获得 1970 代币",
-                "points_change": 1970,
-                "new_balance": 10000,
-                "role": "boss",
-                "period_number": "20241026102152V3WD"
+                "time": "2024-11-02 21:11:16",
+                "description": "增加 1154 代币作为负责人收益",
+                "points_change": 1154,
+                "new_balance": 100000002720,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 10:25:08",
-                "description": "玩家 10001 输掉游戏，老板获得 2970 代币",
-                "points_change": 2970,
-                "new_balance": 12970,
+                "time": "2024-11-02 21:11:16",
+                "description": "玩家 MnqZo7Dz 失去游戏，负责人获得 1154 代币",
+                "points_change": 1154,
+                "new_balance": 100000002720,
                 "role": "boss",
-                "period_number": "202410261025046SPJ"
+                "period_number": "20241102211105RL8L"
             },
             {
-                "time": "2024-10-26 10:25:48",
-                "description": "玩家 10001 赢得游戏，扣除老板 1970 代币",
-                "points_change": -1970,
-                "new_balance": 11000,
-                "role": "boss",
-                "period_number": "202410261025431GK9"
+                "time": "2024-11-02 21:17:54",
+                "description": "增加 2000 代币作为负责人收益",
+                "points_change": 2000,
+                "new_balance": 100000004720,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:35:28",
-                "description": "玩家 10001 赢得游戏，扣除老板 940 代币",
-                "points_change": -940,
-                "new_balance": 10060,
+                "time": "2024-11-02 21:17:54",
+                "description": "玩家 MnqZo7Dz ❌ 失去游戏，负责人获得 2000 代币",
+                "points_change": 2000,
+                "new_balance": 100000004720,
                 "role": "boss",
-                "period_number": "20241026113523Q6X2"
+                "period_number": "20241102211744ZHAF"
             },
             {
-                "time": "2024-10-26 11:36:38",
-                "description": "玩家 10001 赢得游戏，扣除老板 911 代币",
-                "points_change": -911,
-                "new_balance": 9149,
-                "role": "boss",
-                "period_number": "20241026113634NI10"
+                "time": "2024-11-02 21:19:13",
+                "description": "增加 1000 代币作为负责人收益",
+                "points_change": 1000,
+                "new_balance": 100000005720,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:36:52",
-                "description": "玩家 10001 赢得游戏，扣除老板 883 代币",
-                "points_change": -883,
-                "new_balance": 8266,
+                "time": "2024-11-02 21:19:13",
+                "description": "玩家 MnqZo7Dz ❌ 失去游戏，负责人获得 1000 代币",
+                "points_change": 1000,
+                "new_balance": 100000005720,
                 "role": "boss",
-                "period_number": "20241026113647TUPH"
+                "period_number": "20241102211857OUVW"
             },
             {
-                "time": "2024-10-26 11:37:40",
-                "description": "玩家 10001 赢得游戏，扣除老板 861 代币",
-                "points_change": -861,
-                "new_balance": 7405,
-                "role": "boss",
-                "period_number": "20241026113722KIP2"
+                "time": "2024-11-02 21:19:47",
+                "description": "扣除 9850 代币用于支付奖励",
+                "points_change": -9850,
+                "new_balance": 99999995870,
+                "role": "system",
+                "period_number": "system"
             },
             {
-                "time": "2024-10-26 11:38:12",
-                "description": "玩家 10001 输掉游戏，老板获得 1856 代币",
-                "points_change": 1856,
-                "new_balance": 9261,
+                "time": "2024-11-02 21:19:47",
+                "description": "玩家 MnqZo7Dz 🎉 收获游戏，扣除负责人 9850 代币",
+                "points_change": -9850,
+                "new_balance": 99999995870,
                 "role": "boss",
-                "period_number": "202410261138063JCC"
-            }
-        ],
-        "0Om3Me6h": [
+                "period_number": "20241102211937E8PC"
+            },
             {
-                "time": "2024-10-30 06:55:34",
-                "description": "da 1 用于游戏",
-                "points_change": -1,
-                "new_balance": 999,
-                "role": "player",
-                "period_number": "202410300655344LKY",
-                "bet_amount": 1
+                "time": "2024-11-02 21:20:24",
+                "description": "增加 100000 代币作为负责人收益",
+                "points_change": 100000,
+                "new_balance": 100000095870,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:20:24",
+                "description": "玩家 MnqZo7Dz ❌ 失去游戏，负责人获得 100000 代币",
+                "points_change": 100000,
+                "new_balance": 100000095870,
+                "role": "boss",
+                "period_number": "202411022120144OBC"
+            },
+            {
+                "time": "2024-11-02 21:21:20",
+                "description": "增加 100000 代币作为负责人收益",
+                "points_change": 100000,
+                "new_balance": 100000195870,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:21:20",
+                "description": "玩家 MnqZo7Dz ❌ 失去游戏，负责人获得 100000 代币",
+                "points_change": 100000,
+                "new_balance": 100000195870,
+                "role": "boss",
+                "period_number": "2024110221210424PQ"
+            },
+            {
+                "time": "2024-11-02 21:21:52",
+                "description": "增加 100000 代币作为负责人收益",
+                "points_change": 100000,
+                "new_balance": 100000295870,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:21:52",
+                "description": "玩家 MnqZo7Dz ❌ 失去游戏，负责人获得 100000 代币",
+                "points_change": 100000,
+                "new_balance": 100000295870,
+                "role": "boss",
+                "period_number": "20241102212142GLDR"
+            },
+            {
+                "time": "2024-11-02 21:22:28",
+                "description": "扣除 289997 代币用于支付奖励",
+                "points_change": -289997,
+                "new_balance": 100000005873,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:22:28",
+                "description": "玩家 MnqZo7Dz 🎉 收获游戏，扣除负责人 289997 代币",
+                "points_change": -289997,
+                "new_balance": 100000005873,
+                "role": "boss",
+                "period_number": "20241102212218W0WN"
+            },
+            {
+                "time": "2024-11-02 21:23:00",
+                "description": "扣除 175131 代币用于支付奖励",
+                "points_change": -175131,
+                "new_balance": 99999830742,
+                "role": "system",
+                "period_number": "system"
+            },
+            {
+                "time": "2024-11-02 21:23:00",
+                "description": "玩家 MnqZo7Dz 🎉 收获游戏，扣除负责人 175131 代币",
+                "points_change": -175131,
+                "new_balance": 99999830742,
+                "role": "boss",
+                "period_number": "202411022122475UOS"
             }
         ]
     },
     "red_envelopes": {},
     "internal_to_userid": {
         "000": "000",
-        "10001": "1062295115427866629",
-        "0Om3Me6h": "1744580462014688341"
+        "001": "1062295115427866629",
+        "MnqZo7Dz": "1744580462014688341"
     },
     "userid_to_internal": {
         "000": "000",
-        "1062295115427866629": "10001",
-        "1744580462014688341": "0Om3Me6h"
+        "1062295115427866629": "001",
+        "1744580462014688341": "MnqZo7Dz"
     }
 }
